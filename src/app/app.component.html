@@ -12,26 +12,29 @@
         <div class="form-group col-12 mt-1">
             <label>Informe o nome do produto:</label>
             <div class="input-group">
-                <input type="text" class="form-control" #viaService #box (keyup)="onKey(box.value)">
+                <input type="text" class="form-control" #viaService #box (keyup.enter)="onKey(box.value)">
             </div>
             <small class="form-text text-muted">Enviado via service</small>
         </div>
     </div>
 
-    <div *ngIf="item">
+    <div *ngIf="itens">
         
-    <div *ngFor="let item of item">
+    <div *ngFor="let item of itens">
         <table cellspacing="10" style="text-align:left;">
             <thead>
                 <tr>
                     <th>Código Item</th>
                     <th>Nome Varejo</th>
+                    <th>Preco Venda</th>
+                    <th>Opções</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>{{item.codigoItem}}</td>
                     <td>{{item.nomenclaturaVarejo}}</td>
+                    <td>{{item.precoPor}}</td>            
                     <td>                        
                         <button (click)="openDialog(item.codigoItem)">Ver detalhes</button>
                     </td>

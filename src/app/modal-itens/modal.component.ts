@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+import { ItemPreco } from './../preco-item/item-preco.model';
 import { ItemService } from './../item/item.service';
 import { Item } from './../item/item.model';
 
@@ -11,10 +13,13 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 })
 export class ModalComponent implements OnInit {
 
-  item: Item;
+  item: Item[];
+  precoItem: ItemPreco[];
+  public nome: string;
 
-
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<ModalComponent>, public itemService: ItemService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) private idItem: number,
+              private dialogRef: MatDialogRef<ModalComponent>,
+              private itemService: ItemService) { }
 
 
 
@@ -23,6 +28,9 @@ export class ModalComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("Codigo do item no componente de modal " + this.data)
-  }
+    console.log("Codigo do item no componente de modal " + this.idItem)
+    
+    this.itemService.procuraNomeId(this.idItem)
+    .subscribe(nome => this.nome = nome)
+  }  
 }
