@@ -6,9 +6,10 @@ import { HttpClientModule }    from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ModalComponent } from './modal-itens/modal.component';
+import { PrecoItemComponent } from './preco-item/preco-item.component';
 
 @NgModule({
-  declarations: [AppComponent, ModalComponent],
+  declarations: [AppComponent, ModalComponent, PrecoItemComponent],
   imports: [BrowserModule, BrowserAnimationsModule, MaterialModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

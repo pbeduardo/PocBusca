@@ -12,24 +12,37 @@ import { ItemService } from './item/item.service'
 export class AppComponent {
 
   item: Item[];
-
+  
   constructor(public dialog: MatDialog, private itemService: ItemService) {}
   
 
-  openDialog(codItem: number): void {
+  /*onEnter(value: string) { 
+    this.enviarViaService(value);
+  }*/
+
+  onKey(value: string) {
+    this.enviarViaService(value);
+  }
+
+  openDialog(item: Item): void {
     
     const dialogRef = this.dialog.open(ModalComponent, {
-      width: '250px'
+      width: '250px',
+      data: item
     });
 
-    console.log("Numero recebido: ", codItem);
+    // console.log("Numero recebido: ", codItem);
     
   }
+
+
   enviarViaService(stringPesquisa: string) {
     console.log("STRING RECEBIDA PARA PESQUISA: ", stringPesquisa)
     if (stringPesquisa != ""){
+      
     this.itemService.procuraItem(stringPesquisa)
       .subscribe(item => this.item = item)
+    } else {            
     }
   }
 }

@@ -12,11 +12,7 @@
         <div class="form-group col-12 mt-1">
             <label>Informe o nome do produto:</label>
             <div class="input-group">
-                <input type="text" class="form-control" #viaService>
-                <span class="input-group-btn ml-1">
-                    <button class="btn btn-dark" type="button"
-                        (click)="enviarViaService(viaService.value)">Buscar!</button>
-                </span>
+                <input type="text" class="form-control" #viaService #box (keyup)="onKey(box.value)">
             </div>
             <small class="form-text text-muted">Enviado via service</small>
         </div>
