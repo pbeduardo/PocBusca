@@ -12,9 +12,9 @@ import { ItemService } from './item/item.service'
 export class AppComponent {
 
   item: Item[];
-  
-  constructor(public dialog: MatDialog, private itemService: ItemService) {}
-  
+
+  constructor(public dialog: MatDialog, private itemService: ItemService) { }
+
 
   /*onEnter(value: string) { 
     this.enviarViaService(value);
@@ -25,24 +25,24 @@ export class AppComponent {
   }
 
   openDialog(item: Item): void {
-    
+
     const dialogRef = this.dialog.open(ModalComponent, {
       width: '250px',
       data: item
     });
 
     // console.log("Numero recebido: ", codItem);
-    
+
   }
 
 
   enviarViaService(stringPesquisa: string) {
     console.log("STRING RECEBIDA PARA PESQUISA: ", stringPesquisa)
-    if (stringPesquisa != ""){
-      
-    this.itemService.procuraItem(stringPesquisa)
-      .subscribe(item => this.item = item)
-    } else {            
-    }
+    if (stringPesquisa != "") {
+
+      this.itemService.procuraItem(stringPesquisa)
+        .subscribe(item => this.item = item, () => this.item = [])
+    } else
+      this.item = [];
   }
 }
