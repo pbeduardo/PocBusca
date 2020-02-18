@@ -14,20 +14,20 @@
             <div class="input-group">
                 <input type="text" class="form-control" #viaService #box (keyup.enter)="onKey(box.value)">
             </div>
-            <small class="form-text text-muted">Enviado via service</small>
+            <!-- <small class="form-text text-muted">Enviado via service</small> -->
         </div>
     </div>
 
     <div *ngIf="itens">
         
     <div *ngFor="let item of itens">
-        <table cellspacing="10" style="text-align:left;">
+        <table cellspacing="20" style="text-align:left;">
             <thead>
                 <tr>
                     <th>Código Item</th>
                     <th>Nome Varejo</th>
                     <th>Preco Venda</th>
-                    <th>Opções</th>
+                    <td></td>
                 </tr>
             </thead>
             <tbody>
@@ -41,11 +41,11 @@
                 </tr>
             </tbody>
         </table>
-
     </div>
 
 
     </div>
+    
     <!-- Buscando todos os Itens e mostrando na tela Inicio 
     <app-item></app-item> -->
 

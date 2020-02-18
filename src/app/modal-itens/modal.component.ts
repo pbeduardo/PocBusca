@@ -13,24 +13,22 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 })
 export class ModalComponent implements OnInit {
 
-  item: Item[];
-  precoItem: ItemPreco[];
+  item: Item;
   public nome: string;
 
   constructor(@Inject(MAT_DIALOG_DATA) private idItem: number,
               private dialogRef: MatDialogRef<ModalComponent>,
               private itemService: ItemService) { }
 
-
-
-  onNoClick(): void {
+  fechar(): void {
     this.dialogRef.close();
   }
 
   ngOnInit() {
     console.log("Codigo do item no componente de modal " + this.idItem)
     
+    //Pegando nome do Produto
     this.itemService.procuraNomeId(this.idItem)
     .subscribe(nome => this.nome = nome)
-  }  
+  }
 }

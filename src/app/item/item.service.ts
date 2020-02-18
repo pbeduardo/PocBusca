@@ -18,6 +18,7 @@ export class ItemService {
     return this.http.get<Item[]>(`${BUSCA_API}/itens`)
   }
 
+
   procuraItem(itemParaProcurar: string): Observable<Item[]> {
 
     const httpOptions = {
@@ -27,6 +28,7 @@ export class ItemService {
     return this.http.get<Item[]>(`${BUSCA_API}autocomplete?nome=${itemParaProcurar}&codigoFilial=101&maxResult=10`, httpOptions)
   }
 
+
   procuraPrecoItem(idItem: number): Observable<ItemPreco[]> {
 
     const httpOptions = {
@@ -34,6 +36,7 @@ export class ItemService {
     };
     return this.http.get<ItemPreco[]>(`${BUSCA_PRECO_API}precos?filial=101&perfil=1&item=${idItem}`, httpOptions)
   }
+  
 
   procuraNomeId(idItem: number): Observable<string> {
 
@@ -43,5 +46,4 @@ export class ItemService {
     };
     return this.http.get(`${BUSCA_NOME_ID}${idItem}/nome`, {responseType: 'text'})
   }
-
 }
