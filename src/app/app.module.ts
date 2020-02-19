@@ -12,6 +12,7 @@ import { ItemDetalhesComponent } from './item-detalhes/item-detalhes.component';
 
 @NgModule({
   declarations: [AppComponent, ModalComponent, PrecoItemComponent, EstoqueItemComponent, ItemDetalhesComponent],
+  
   imports: [BrowserModule, BrowserAnimationsModule, MaterialModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

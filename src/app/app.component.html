@@ -1,55 +1,43 @@
-<!DOCTYPE html>
-<html>
+<!-- Conteúdo Inicio-->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">POC - Busca Itens</a>
+</nav>
 
-<head>
-    <meta charset="UTF-8" />
-</head>
-
-<body>
-    <!-- Conteúdo Inicio-->
-
-    <div class="row">
-        <div class="form-group col-12 mt-1">
-            <label>Informe o nome do produto:</label>
-            <div class="input-group">
-                <input type="text" class="form-control" #viaService #box (keyup.enter)="onKey(box.value)">
-            </div>
-            <!-- <small class="form-text text-muted">Enviado via service</small> -->
+<div class="container">
+    <div class="container"><br>
+        <div class="input-group">
+            <input type="text" class="form-control" #viaService #box (keyup.enter)="onKey(box.value)"
+                placeholder="Digite o nome do produto!">
         </div>
+        <!-- <small class="form-text text-muted">Enviado via service</small> -->
     </div>
+</div><br>
+<p *ngIf="!itens" class="text-center"></p>
+<div class="container able-responsive" *ngIf="itens">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Nome</th>
+                <th class="text-center" scope="col">Preço</th>
+                <th class="text-center" scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of itens">
+                <td class="text-left">{{item.codigoItem}}</td>
+                <td class="text-left">{{item.nomenclaturaVarejo}}</td>
+                <td class="text-center">R$ {{item.precoPor}}</td>
+                <td class="text-center">
+                    <button class="btn btn-info" (click)="openDialog(item.codigoItem)">Ver detalhes</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-    <div *ngIf="itens">
-        
-    <div *ngFor="let item of itens">
-        <table cellspacing="20" style="text-align:left;">
-            <thead>
-                <tr>
-                    <th>Código Item</th>
-                    <th>Nome Varejo</th>
-                    <th>Preco Venda</th>
-                    <td></td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{item.codigoItem}}</td>
-                    <td>{{item.nomenclaturaVarejo}}</td>
-                    <td>{{item.precoPor}}</td>            
-                    <td>                        
-                        <button (click)="openDialog(item.codigoItem)">Ver detalhes</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+</div>
 
-
-    </div>
-    
-    <!-- Buscando todos os Itens e mostrando na tela Inicio 
+<!-- Buscando todos os Itens e mostrando na tela Inicio 
     <app-item></app-item> -->
 
-    <!-- Fim Conteúdo Inicio -->
-</body>
-
-</html>
+<!-- Fim Conteúdo Inicio -->
