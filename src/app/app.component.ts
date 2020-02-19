@@ -1,11 +1,11 @@
 import { ItemPreco } from './preco-item/item-preco.model';
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from './modal-itens/modal.component';
 import { Item } from './item/item.model';
 import { ItemService } from './item/item.service'
 import { forkJoin, Observable } from 'rxjs';
-import { switchMap, map, tap, take } from 'rxjs/operators';
+import { switchMap, map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -70,9 +70,8 @@ export class AppComponent {
   //Envia o Código do Item para Modal
   openDialog(item: number): void {
     const dialogRef = this.dialog.open(ModalComponent, {
-      width: '250px',
+      width: '50%',      
       data: item
     });
   }
-
 }

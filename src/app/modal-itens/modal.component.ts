@@ -1,7 +1,5 @@
-import { Observable } from 'rxjs';
-import { ItemPreco } from './../preco-item/item-preco.model';
 import { ItemService } from './../item/item.service';
-import { Item } from './../item/item.model';
+import { EstoqueItem } from'../estoque-item/estoque'
 
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
@@ -12,9 +10,9 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
   styleUrls: ['./modal.component.css']
 })
 export class ModalComponent implements OnInit {
-
-  item: Item;
+ 
   public nome: string;
+  public estoqueItem: EstoqueItem;
 
   constructor(@Inject(MAT_DIALOG_DATA) private idItem: number,
               private dialogRef: MatDialogRef<ModalComponent>,
@@ -30,5 +28,9 @@ export class ModalComponent implements OnInit {
     //Pegando nome do Produto
     this.itemService.procuraNomeId(this.idItem)
     .subscribe(nome => this.nome = nome)
+    
+    //Pegando o Estoque do Produto
+    this.itemService.procuraEstoqueItem(this.idItem)
+      .subscribe(estoqueItem => this.estoqueItem = estoqueItem)       
   }
 }

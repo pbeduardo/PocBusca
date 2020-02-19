@@ -2,8 +2,9 @@ import { ItemPreco } from './../preco-item/item-preco.model';
 import { Item } from './item.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
-import { BUSCA_API, BUSCA_PRECO_API, BUSCA_NOME_ID } from '../api';
+import { Observable } from 'rxjs';
+import { BUSCA_API, BUSCA_PRECO_API, BUSCA_NOME_ID, BUSCA_ESTOQUE_API } from '../api';
+import { EstoqueItem } from '../estoque-item/estoque';
 
 @Injectable({
   providedIn: 'root'
@@ -45,5 +46,13 @@ export class ItemService {
       headers: new HttpHeaders({ 'app-token': 'mCl6SnTQp6eT' })
     };
     return this.http.get(`${BUSCA_NOME_ID}${idItem}/nome`, {responseType: 'text'})
+  }
+
+  procuraEstoqueItem(idItem: number): Observable<EstoqueItem>{
+
+    const httpOptions = {
+      headers: new HttpHeaders({ 'app-token': 'mCl6SnTQp6eT' })
+    };    
+    return this.http.get<EstoqueItem>(`${BUSCA_ESTOQUE_API}/?itens=${idItem}`, httpOptions)
   }
 }

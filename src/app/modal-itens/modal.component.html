@@ -2,7 +2,13 @@
 <h1 mat-dialog-title>{{ nome }}</h1>
 
 <div mat-dialog-content>
-  <p>Aqui detalhes do produto</p>
+  <p>Aqui detalhes do produto:</p><br>
+  <div *ngFor="let estoqueItem of estoqueItem">
+    <p>Estoque Loja: {{estoqueItem.estoqueLoja}}</p>
+    <p>Estoque de Apoio: {{estoqueItem.estoqueApoio}}</p>
+    <p>Estoque no Centro de Distribuição: {{estoqueItem.estoqueCd}}</p>
+
+  </div>
 </div>
 
 <div mat-dialog-actions>
