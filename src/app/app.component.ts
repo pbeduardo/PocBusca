@@ -51,7 +51,7 @@ export class AppComponent {
 
   private adicionarPrecoItens(itens: Item[]): Observable<Item[]> {
     return forkJoin(
-                        //Indo no Service, enviando o Código e pegando o preço.
+      //Indo no Service, enviando o Código e pegando o preço.
       itens.map(item => this.itemService.procuraPrecoItem(item.codigoItem)
         .pipe(
           tap(itemPreco => this.adicionarPrecoItem(item, itemPreco)),
@@ -67,10 +67,10 @@ export class AppComponent {
   }
 
 
-  //Envia o Código do Item para Modal
+  //Abre e Envia o Código do Item para Modal
   openDialog(item: number): void {
     const dialogRef = this.dialog.open(ModalComponent, {
-      width: '50%',      
+      width: '50%',
       data: item
     });
   }

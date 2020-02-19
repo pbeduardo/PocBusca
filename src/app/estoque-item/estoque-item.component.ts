@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-estoque-item',
-  templateUrl: './estoque-item.component.html',
-  styleUrls: ['./estoque-item.component.css']
+  templateUrl: './estoque-item.component.html'
 })
 export class EstoqueItemComponent implements OnInit {
 

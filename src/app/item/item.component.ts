@@ -14,9 +14,8 @@ export class ItemComponent implements OnInit {
   constructor(private itemService: ItemService) { }
 
   ngOnInit(): void {
-
+    
     this.itemService.retornaTodosItens()
       .subscribe(itens => this.itens = itens)
-  }  
-
+  }
 }

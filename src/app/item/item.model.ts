@@ -10,6 +10,6 @@ export class Item {
     public exclusivoPanvel: boolean;
     public participaListaReferencial: boolean;
     public participaFarmaciaPopular: boolean;
-    
+        
     public precoPor: number;
 }
