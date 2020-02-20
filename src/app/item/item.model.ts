@@ -12,4 +12,5 @@ export class Item {
     public participaFarmaciaPopular: boolean;
         
     public precoPor: number;
+    public estoqueLoja: number;
 }

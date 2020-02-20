@@ -6,6 +6,8 @@ import { Item } from './item/item.model';
 import { ItemService } from './item/item.service'
 import { forkJoin, Observable } from 'rxjs';
 import { switchMap, map, tap } from 'rxjs/operators';
+import { EstoqueItem } from './estoque-item/estoque';
+
 
 @Component({
   selector: 'app-root',
@@ -16,6 +18,8 @@ export class AppComponent {
 
   itens: Item[];
   itemPreco: ItemPreco[];
+  estoqueItem: EstoqueItem[];
+
 
   constructor(public dialog: MatDialog, private itemService: ItemService) { }
 
@@ -34,6 +38,7 @@ export class AppComponent {
       this.itemService.procuraItem(stringPesquisa)
         .pipe(
           map(itens => this.obterDezPrimeirasPosicoes(itens)),
+          switchMap(itens => this.adicionarEstoqueItens(itens)),
           switchMap(itens => this.adicionarPrecoItens(itens))
         )
         .subscribe(itens => {
@@ -61,9 +66,26 @@ export class AppComponent {
     );
   }
 
+  private adicionarEstoqueItens(itens: Item[]): Observable<Item[]> {
+    return forkJoin(
+      //Indo no Service, enviando o Código e pegando o preço.
+      itens.map(item => this.itemService.procuraEstoqueItem(item.codigoItem)
+        .pipe(
+          tap(estoqueItem => this.adicionarEstoqueItem(item, estoqueItem)),
+          map(() => item)
+        )
+      )
+    );
+  }
+
   //Adicionando o Preço!
   private adicionarPrecoItem(item: Item, itemPreco: ItemPreco[]): void {
     item.precoPor = itemPreco[0].preco.precoPor;
+  }
+
+  //Adicionando o Estoque!
+  private adicionarEstoqueItem(item: Item, estoqueItem: EstoqueItem): void {
+    item.estoqueLoja = estoqueItem[0].estoqueLoja;
   }
 
 

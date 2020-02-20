@@ -41,8 +41,15 @@ export class ItemService {
       headers: new HttpHeaders({ 'app-token': 'mCl6SnTQp6eT' })
     };
     return this.http.get<ItemPreco[]>(`${BUSCA_PRECO_API}precos?filial=101&perfil=1&item=${idItem}`, httpOptions)
-  }
+  }  
 
+  procuraEstoqueItem(idItem: number): Observable<EstoqueItem> {
+
+    const httpOptions = {
+      headers: new HttpHeaders({ 'app-token': 'mCl6SnTQp6eT' })
+    };
+    return this.http.get<EstoqueItem>(`${BUSCA_ESTOQUE_API}/?itens=${idItem}`, httpOptions)
+  }
 
   procuraNomeId(idItem: number): Observable<string> {
 
@@ -51,14 +58,6 @@ export class ItemService {
       headers: new HttpHeaders({ 'app-token': 'mCl6SnTQp6eT' })
     };
     return this.http.get(`${BUSCA_NOME_ID}${idItem}/nome`, { responseType: 'text' })
-  }
-
-  procuraEstoqueItem(idItem: number): Observable<EstoqueItem> {
-
-    const httpOptions = {
-      headers: new HttpHeaders({ 'app-token': 'mCl6SnTQp6eT' })
-    };
-    return this.http.get<EstoqueItem>(`${BUSCA_ESTOQUE_API}/?itens=${idItem}`, httpOptions)
   }
 
   //POST

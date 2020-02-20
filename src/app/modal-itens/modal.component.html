@@ -1,16 +1,69 @@
- 
-<h1 mat-dialog-title>{{ nome }}</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
 
-<div mat-dialog-content>
-  <p>Aqui detalhes do produto:</p><br>
-  <div *ngFor="let estoqueItem of estoqueItem">
-    <p>Estoque Loja: {{estoqueItem.estoqueLoja}}</p>
-    <p>Estoque de Apoio: {{estoqueItem.estoqueApoio}}</p>
-    <p>Estoque no Centro de Distribuição: {{estoqueItem.estoqueCd}}</p>
-    <img [src]="img"/>
+      
+        <div class="card-body text-center">
+          <h5 class="card-title">{{nome}}</h5>
+          Princípio ativo <p class="card-text">{{principioAtivo}}</p>
+          Classe terapêutica <p class="card-text">{{classeTerapeutica}}</p>
+          <div *ngFor="let categoria of categorias">
+            <p class="card-text"><small class="text-muted">{{categoria.descricao}}</small></p>            
+          </div><br>          
+        </div>
+      
+
+    </div>
+
+    <div class="col-sm-6">
+
+      <img class="card-img-top" [src]="img" alt="Card image cap">
+      <p class="card-text text-center"><small class="text-muted">{{descricaoMarcaPai}}</small></p>
+
+    </div>
   </div>
 </div>
 
-<div mat-dialog-actions>
-  <button mat-button (click)="fechar()">Fechar</button>
+
+
+<!-- <div class="card text-center" style="width: 20rem;">
+  <img class="card-img-top" [src]="img" alt="Card image cap">
+  <div class="card-header">
+    {{descricaoMarcaPai}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{nome}}</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  <div class="card-footer text-muted">
+    {{descricaoMarcaPai}}   
+  </div>
 </div>
+
+
+<h1 mat-dialog-title>{{ nome }} </h1> 
+
+{{descricaoMarcaPai}}
+
+<div mat-dialog-content>
+  <p>{{principioAtivo}}<br>
+    {{classeTerapeutica}}</p>
+
+  <div *ngFor="let categoria of categorias">
+    {{categoria.descricao}}
+  </div><br>
+
+
+  <div *ngFor="let estoqueItem of estoqueItem">
+    <p>Estoque:
+      Loja: {{estoqueItem.estoqueLoja}} | Apoio: {{estoqueItem.estoqueApoio}} | Centro de Distribuição:
+      {{estoqueItem.estoqueCd}}
+      <img [src]="img" />
+  </div>
+
+</div>
+
+<div mat-dialog-actions>
+  <button type="button" class="btn btn-outline-dark" (click)="fechar()">Fechar</button>
+</div> -->
