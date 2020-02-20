@@ -4,19 +4,18 @@
 
       <div class="card-body text-center">
         <h5 class="card-title">{{nome}}</h5>
-        Princípio ativo <p class="card-text">{{principioAtivo}}</p>
-        Classe terapêutica <p class="card-text">{{classeTerapeutica}}</p>
+        <strong>Princípio ativo</strong><p class="card-text">{{principioAtivo}}</p>
+        <strong>Classe terapêutica</strong><p class="card-text">{{classeTerapeutica}}</p>
         <div *ngFor="let categoria of categorias">
           <p class="card-text"><small class="text-muted">{{categoria.descricao}}</small></p>
         </div><br>
       </div>
-
-
+      
     </div>
 
     <div class="col-sm-6">
       <div>
-        <img class="card-img-top" [src]="img || noImg" alt="Image not found"
+        <img class="card-img-top" [src]="img || noImg" alt="Card image cap"
           onerror="this.onerror=null;this.src='https://apolloonibus.fbitsstatic.net/img/p/produto-nao-possui-foto-no-momento/sem-foto.jpg'" />
       </div>
       <!-- <div *ngIf="!img">

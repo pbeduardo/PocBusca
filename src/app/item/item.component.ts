@@ -1,4 +1,4 @@
-import { ItemService } from './item.service';
+import { ItemService } from '../item.service';
 import { Item } from './item.model';
 import { Component, OnInit } from '@angular/core';
 

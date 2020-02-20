@@ -1,4 +1,4 @@
-import { ItemService } from './../item/item.service';
+import { ItemService } from '../item.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 

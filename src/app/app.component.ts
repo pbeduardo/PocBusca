@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from './modal-itens/modal.component';
 import { Item } from './item/item.model';
-import { ItemService } from './item/item.service'
+import { ItemService } from './item.service'
 import { forkJoin, Observable } from 'rxjs';
 import { switchMap, map, tap } from 'rxjs/operators';
 import { EstoqueItem } from './estoque-item/estoque';
