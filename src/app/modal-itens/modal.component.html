@@ -1,25 +1,33 @@
 <div class="container">
-  <div class="row">
+  <div class="row d-flex justify-content-center">
     <div class="col-sm-6">
 
-      
-        <div class="card-body text-center">
-          <h5 class="card-title">{{nome}}</h5>
-          Princípio ativo <p class="card-text">{{principioAtivo}}</p>
-          Classe terapêutica <p class="card-text">{{classeTerapeutica}}</p>
-          <div *ngFor="let categoria of categorias">
-            <p class="card-text"><small class="text-muted">{{categoria.descricao}}</small></p>            
-          </div><br>          
-        </div>
-      
+      <div class="card-body text-center">
+        <h5 class="card-title">{{nome}}</h5>
+        Princípio ativo <p class="card-text">{{principioAtivo}}</p>
+        Classe terapêutica <p class="card-text">{{classeTerapeutica}}</p>
+        <div *ngFor="let categoria of categorias">
+          <p class="card-text"><small class="text-muted">{{categoria.descricao}}</small></p>
+        </div><br>
+      </div>
+
 
     </div>
 
     <div class="col-sm-6">
-
-      <img class="card-img-top" [src]="img" alt="Card image cap">
+      <div>
+        <img class="card-img-top" [src]="img || noImg" alt="Image not found"
+          onerror="this.onerror=null;this.src='https://apolloonibus.fbitsstatic.net/img/p/produto-nao-possui-foto-no-momento/sem-foto.jpg'" />
+      </div>
+      <!-- <div *ngIf="!img">
+        Sem imagem do produto!
+        <img class="card-img-top" [src]="noImg" alt="Card image cap">
+      </div> -->
       <p class="card-text text-center"><small class="text-muted">{{descricaoMarcaPai}}</small></p>
 
+    </div>
+    <div mat-dialog-actions>
+      <button type="button" class="btn btn-outline-dark" (click)="fechar()">Fechar</button>
     </div>
   </div>
 </div>
@@ -64,6 +72,4 @@
 
 </div>
 
-<div mat-dialog-actions>
-  <button type="button" class="btn btn-outline-dark" (click)="fechar()">Fechar</button>
-</div> -->
+-->

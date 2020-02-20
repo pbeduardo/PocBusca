@@ -8,10 +8,11 @@
         <div class="input-group">
             <input type="text" class="form-control " #viaService #box (keyup.enter)="onKey(box.value)"
                 placeholder="Digite o nome do produto">
-        </div>        
+        </div>
     </div>
 </div><br>
 <p *ngIf="!itens" class="text-center"></p>
+
 <div class="container table-responsive" *ngIf="itens">
     <table class="table table-striped">
         <thead>
@@ -37,7 +38,13 @@
     </table>
 </div>
 
-<!-- Buscando todos os Itens e mostrando na tela Inicio 
-    <app-item></app-item> -->
+<footer class="page-footer font-small blue">
+    <div class="footer-copyright text-center py-3">
+        <div class="pull-right hidden-xs">
+            <b>Versão</b> 1.0.0
+        </div>
+        <strong>POC Busca </strong> Angular Application
+    </div>
+</footer>
 
 <!-- Fim Conteúdo Inicio -->

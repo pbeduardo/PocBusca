@@ -14,6 +14,7 @@ export class ModalComponent implements OnInit {
   public categorias: string[];
   public descricaoMarcaPai: string;
   public img;
+  public noImg = "https://apolloonibus.fbitsstatic.net/img/p/produto-nao-possui-foto-no-momento/sem-foto.jpg"
   //Fazer model para descrição
 
 
@@ -40,11 +41,16 @@ export class ModalComponent implements OnInit {
 
       //Fazer model para descrição
       {
-        this.img = res.itens[0].dadosImagens[0].url;
+
         this.principioAtivo = res.itens[0].principioAtivo;
         this.classeTerapeutica = res.itens[0].classeTerapeutica;
         this.categorias = res.itens[0].categorias;
         this.descricaoMarcaPai = res.itens[0].descricaoMarcaPai;
+
+        if (res && res.itens && res.itens[0].dadosImagens[0] && res.itens[0].dadosImagens[0].url){
+          
+          this.img = res.itens[0].dadosImagens[0].url;
+        }
       }
         //Fazer model para descrição
 
