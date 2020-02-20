@@ -61,7 +61,7 @@ export class ItemService {
 
   //POST
   public retornaDetalhesItem(codigo: number): Observable<any>{
-    console.log("CONSOLE LOG NO SERVICE:  CODIGO RECEBIDO DA MODAL: ",codigo)
+    //console.log("CONSOLE LOG NO SERVICE:  CODIGO RECEBIDO DA MODAL: ",codigo)
 
     //Montar a request
     const request = ItensDetalheRequestBuilder.get()
@@ -76,7 +76,7 @@ export class ItemService {
     ))
     .build();
     
-    console.log("CONSOLE LOG NO SERVICE DO REQUEST: ",request)
+    //console.log("CONSOLE LOG NO SERVICE DO REQUEST: ",request)
     
       const httpOptions = {
       headers: new HttpHeaders({ 'app-token': 'mCl6SnTQp6eT' })

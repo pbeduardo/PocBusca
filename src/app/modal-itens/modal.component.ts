@@ -29,7 +29,7 @@ export class ModalComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("Codigo do item no componente de modal " + this.codigoItem)
+    //console.log("Codigo do item no componente de modal " + this.codigoItem)
 
     //Pegando nome do Produto
     this.itemService.procuraNomeId(this.codigoItem)

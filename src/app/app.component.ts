@@ -30,9 +30,7 @@ export class AppComponent {
 
   //Pesquisando Item
   enviarViaService(stringPesquisa: string) {
-    console.log("STRING RECEBIDA PARA PESQUISA: ", stringPesquisa)
-
-
+    //console.log("STRING RECEBIDA PARA PESQUISA: ", stringPesquisa)
     if (stringPesquisa != "") {
 
       this.itemService.procuraItem(stringPesquisa)
