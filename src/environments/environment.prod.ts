@@ -7,6 +7,10 @@ export const environment = {
   apipreco: 'http://api-int.grupodimedservices.com.br/tst/mostruario/v3/itens/',
   //http://api-int.grupodimedservices.com.br/tst/mostruario/v3/itens/precos?filial=101&perfil=1&item={codigoItem}&item={codigoItem}
 
-  apibuscaid: 'http://tst.grupodimedservices.com.br/item/v3/item/'
+  apibuscaid: 'http://tst.grupodimedservices.com.br/item/v3/item/',
   //http://api-int.grupodimedservices.com.br/tst/item/v3/item/{codigoItem}/nome
+
+  apiestoque: 'http://api-int.grupodimedservices.com.br/tst/filial/v1/filiais/101/estoque'
+  //http://api-int.grupodimedservices.com.br/tst/filial/v1/filiais/101/estoque?itens={codigoItem}
+  
 };

@@ -19,6 +19,7 @@ export class ItemService {
 
   constructor(private http: HttpClient) { }
 
+  
   retornaTodosItens(): Observable<Item[]> {
     return this.http.get<Item[]>(`${BUSCA_API}/itens`)
   }
