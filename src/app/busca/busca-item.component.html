@@ -1,0 +1,13 @@
+<!-- Conteúdo Inicio -->
+
+<div class="container">
+    <div class="container"><br>
+        <div class="input-group">
+            <input type="text" class="form-control " #viaService #box (keyup.enter)="onKey(box.value)"
+                placeholder="Digite o nome do produto">
+        </div>
+    </div><br>
+    <resultado-busca [itens]="itens" *ngIf="itens"> </resultado-busca>
+</div>
+
+ <!-- Fim Conteúdo Inicio -->

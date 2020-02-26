@@ -1,0 +1,22 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Código</th>
+            <th scope="col">Nome</th>
+            <th class="text-center table-warning" scope="col">Preço</th>
+            <th class="text-center" scope="col">Estoque na Loja</th>
+            <th class="text-center" scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of itens">
+            <td class="text-left">{{item.codigoItem}}</td>
+            <td class="text-left">{{item.nomenclaturaVarejo}}</td>
+            <td class="text-center table-warning">R$ {{item.precoPor}}</td>
+            <td class="text-center">{{item.estoqueLoja}}</td>
+            <td class="text-center">
+                <button class="btn btn-info" (click)="openDialog(item.codigoItem)">Ver detalhes</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

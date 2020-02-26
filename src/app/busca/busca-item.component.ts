@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemPreco } from '../preco-item/item-preco.model';
+import { ItemPreco } from './item/item-preco.model';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modal-itens/modal.component';
-import { Item } from '../item/item.model';
-import { ItemService } from '../item.service'
+import { Item } from './item/item.model';
+import { BuscaService } from './busca.service'
 import { forkJoin, Observable } from 'rxjs';
 import { switchMap, map, tap } from 'rxjs/operators';
-import { EstoqueItem } from '../estoque-item/estoque';
+import { EstoqueItem } from './item/item-estoque';
 
 @Component({
   selector: 'app-busca-item',
@@ -19,7 +19,7 @@ export class BuscaItemComponent {
   estoqueItem: EstoqueItem[];
 
 
-  constructor(public dialog: MatDialog, private itemService: ItemService) { }
+  constructor(public dialog: MatDialog, private buscaService: BuscaService) { }
 
   //Pressiona Ok na pesquisa e envia o valor para a função!
   onKey(value: string) {
@@ -31,7 +31,7 @@ export class BuscaItemComponent {
     //console.log("STRING RECEBIDA PARA PESQUISA: ", stringPesquisa)
     if (stringPesquisa != "") {
 
-      this.itemService.procuraItem(stringPesquisa)
+      this.buscaService.procuraItem(stringPesquisa)
         .pipe(
           map(itens => this.obterDezPrimeirasPosicoes(itens)),
           switchMap(itens => this.adicionarEstoqueItens(itens)),
@@ -53,7 +53,7 @@ export class BuscaItemComponent {
   private adicionarPrecoItens(itens: Item[]): Observable<Item[]> {
     return forkJoin(
       //Indo no Service, enviando o Código e pegando o preço.
-      itens.map(item => this.itemService.procuraPrecoItem(item.codigoItem)
+      itens.map(item => this.buscaService.procuraPrecoItem(item.codigoItem)
         .pipe(
           tap(itemPreco => this.adicionarPrecoItem(item, itemPreco)),
           map(() => item)
@@ -65,7 +65,7 @@ export class BuscaItemComponent {
   private adicionarEstoqueItens(itens: Item[]): Observable<Item[]> {
     return forkJoin(
       //Indo no Service, enviando o Código e pegando o estoque.
-      itens.map(item => this.itemService.procuraEstoqueItem(item.codigoItem)
+      itens.map(item => this.buscaService.procuraEstoqueItem(item.codigoItem)
         .pipe(
           tap(estoqueItem => this.adicionarEstoqueItem(item, estoqueItem)),
           map(() => item)
@@ -83,14 +83,4 @@ export class BuscaItemComponent {
   private adicionarEstoqueItem(item: Item, estoqueItem: EstoqueItem): void {
     item.estoqueLoja = estoqueItem[0].estoqueLoja;
   }
-
-
-  //Abre e Envia o Código do Item para Modal
-  openDialog(item: number): void {
-    const dialogRef = this.dialog.open(ModalComponent, {
-      width: '50%',
-      data: item
-    });
-  }
-
 }

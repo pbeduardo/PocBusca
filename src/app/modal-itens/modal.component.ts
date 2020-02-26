@@ -1,12 +1,14 @@
-import { ItemService } from '../item.service';
+import { BuscaService } from '../busca/busca.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DetalheItem } from '../busca/item/item-detalhes/integration/response/item-detalhe.response';
+
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html'
 })
-export class ModalComponent implements OnInit {
+export class ModalComponent implements OnInit {  
 
   //Fazer model para descrição
   public principioAtivo: string;
@@ -15,14 +17,12 @@ export class ModalComponent implements OnInit {
   public descricaoMarcaPai: string;
   public img;
   public noImg = "https://apolloonibus.fbitsstatic.net/img/p/produto-nao-possui-foto-no-momento/sem-foto.jpg"
-  //Fazer model para descrição
-
-
   public nome: string;
+  //Fazer model para descrição
 
   constructor(@Inject(MAT_DIALOG_DATA) private codigoItem: number,
     private dialogRef: MatDialogRef<ModalComponent>,
-    private itemService: ItemService) { }
+    private buscaService: BuscaService) { }
 
   fechar(): void {
     this.dialogRef.close();
@@ -32,11 +32,11 @@ export class ModalComponent implements OnInit {
     //console.log("Codigo do item no componente de modal " + this.codigoItem)
 
     //Pegando nome do Produto
-    this.itemService.procuraNomeId(this.codigoItem)
+    this.buscaService.procuraNomeId(this.codigoItem)
       .subscribe(nome => this.nome = nome)
 
     //Pegando Detalhes
-    this.itemService.retornaDetalhesItem(this.codigoItem)
+    this.buscaService.retornaDetalhesItem(this.codigoItem)
       .subscribe(res =>
 
       //Fazer model para descrição

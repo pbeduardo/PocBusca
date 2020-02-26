@@ -1,21 +1,21 @@
-import { ItemPreco } from './preco-item/item-preco.model';
+import { ItemPreco } from './item/item-preco.model';
 import { Item } from './item/item.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { BUSCA_API, BUSCA_PRECO_API, BUSCA_NOME_ID, BUSCA_ESTOQUE_API } from './api';
-import { EstoqueItem } from './estoque-item/estoque';
-import { ItemDetalheRequest } from './item-detalhes/integration/request/item-detalhe.request';
-import { ConsultaRegrasFiscaisRequest } from './item-detalhes/integration/request/consulta-regras-fiscais.request';
-import { ConsultaRegrasFiscaisEnum } from './item-detalhes/enum/consulta-regras-fiscais.enum';
-import { ItensDetalheRequestBuilder } from './item-detalhes/builder/itens-detalhe-request.builder';
+import { BUSCA_API, BUSCA_PRECO_API, BUSCA_NOME_ID, BUSCA_ESTOQUE_API } from '../api';
+import { EstoqueItem } from './item/item-estoque';
+import { ItemDetalheRequest } from './item/item-detalhes/integration/request/item-detalhe.request';
+import { ConsultaRegrasFiscaisRequest } from './item/item-detalhes/integration/request/consulta-regras-fiscais.request';
+import { ConsultaRegrasFiscaisEnum } from './item/item-detalhes/enum/consulta-regras-fiscais.enum';
+import { ItensDetalheRequestBuilder } from './item/item-detalhes/builder/itens-detalhe-request.builder';
 
 @Injectable({
   providedIn: 'root'
 })
 
 @Injectable()
-export class ItemService {
+export class BuscaService {
 
   constructor(private http: HttpClient) { }
 

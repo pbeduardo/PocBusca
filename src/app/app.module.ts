@@ -6,13 +6,11 @@ import { HttpClientModule }    from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ModalComponent } from './modal-itens/modal.component';
-import { PrecoItemComponent } from './preco-item/preco-item.component';
-import { EstoqueItemComponent } from './estoque-item/estoque-item.component';
-import { ItemDetalhesComponent } from './item-detalhes/item-detalhes.component';
-import { BuscaItemComponent } from './busca-item/busca-item.component';
+import { BuscaItemComponent } from './busca/busca-item.component';
+import { ResultadoBuscaComponent } from './resultado-busca/resultado-busca.component';
 
 @NgModule({
-  declarations: [AppComponent, ModalComponent, PrecoItemComponent, EstoqueItemComponent, ItemDetalhesComponent, BuscaItemComponent],
+  declarations: [AppComponent, ModalComponent, BuscaItemComponent, ResultadoBuscaComponent],
   
   imports: [BrowserModule, BrowserAnimationsModule, MaterialModule, HttpClientModule],
   providers: [],

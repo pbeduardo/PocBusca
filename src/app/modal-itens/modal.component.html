@@ -5,20 +5,22 @@
       <div class="card-body text-center">
         <h5 class="card-title">{{nome}}</h5>
         <div *ngIf="principioAtivo">
-          <strong>Princípio ativo</strong><p class="card-text">{{principioAtivo}}</p>
+          <strong>Princípio ativo</strong>
+          <p class="card-text">{{principioAtivo}}</p>
         </div>
 
         <div *ngIf="classeTerapeutica">
-          <strong>Classe terapêutica</strong><p class="card-text">{{classeTerapeutica}}</p>
+          <strong>Classe terapêutica</strong>
+          <p class="card-text">{{classeTerapeutica}}</p>
         </div>
-        
+
         <div *ngIf="categorias">
           <div *ngFor="let categoria of categorias">
             <p class="card-text"><small class="text-muted">{{categoria.descricao}}</small></p>
           </div>
         </div>
       </div>
-      
+
     </div>
 
     <div class="col-sm-6">
