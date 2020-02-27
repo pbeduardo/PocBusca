@@ -33,7 +33,7 @@ export class BuscaItemComponent {
         //pipe é uma função utilizada para combinar funções
         .pipe(
           //com o resultado da busca, filtra somente os 10 primeiros resultados
-          map(itens => this.obterDezPrimeirasPosicoes(itens)),
+          //map(itens => this.obterDezPrimeirasPosicoes(itens)),
 
           //switchMap pega todos os resultados (itens) e adiciona Estoque/Preço em cada um.
           switchMap(itens => this.adicionarEstoqueItens(itens)),

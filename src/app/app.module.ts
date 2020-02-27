@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { ModalComponent } from './modal-itens/modal.component';
 import { BuscaItemComponent } from './busca/busca-item.component';
 import { ResultadoBuscaComponent } from './resultado-busca/resultado-busca.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ResultadoBuscaComponent } from './resultado-busca/resultado-busca.compo
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
 
   providers: [

@@ -9,6 +9,7 @@ import { ModalComponent } from '../modal-itens/modal.component';
 export class ResultadoBuscaComponent implements OnInit {
 
   @Input() itens;
+  public paginaAtual = 1;
 
   constructor(public dialog: MatDialog) { }
 
