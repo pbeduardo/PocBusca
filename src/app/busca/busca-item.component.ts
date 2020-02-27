@@ -1,12 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ItemPreco } from './item/item-preco.model';
-import { MatDialog } from '@angular/material/dialog';
-import { ModalComponent } from '../modal-itens/modal.component';
 import { Item } from './item/item.model';
 import { BuscaService } from './busca.service'
 import { forkJoin, Observable } from 'rxjs';
 import { switchMap, map, tap } from 'rxjs/operators';
-import { EstoqueItem } from './item/item-estoque';
+import { EstoqueItem } from './item/item-estoque.model';
 
 @Component({
   selector: 'app-busca-item',
@@ -19,24 +17,29 @@ export class BuscaItemComponent {
   estoqueItem: EstoqueItem[];
 
 
-  constructor(public dialog: MatDialog, private buscaService: BuscaService) { }
+  constructor(private buscaService: BuscaService) { }
 
-  //Pressiona Ok na pesquisa e envia o valor para a função!
+  //Pressiona Enter na pesquisa e envia o valor para a função!
   onKey(value: string) {
     this.enviarViaService(value);
   }
 
   //Pesquisando Item
   enviarViaService(stringPesquisa: string) {
-    //console.log("STRING RECEBIDA PARA PESQUISA: ", stringPesquisa)
+    
     if (stringPesquisa != "") {
 
       this.buscaService.procuraItem(stringPesquisa)
+        //pipe é uma função utilizada para combinar funções
         .pipe(
+          //com o resultado da busca, filtra somente os 10 primeiros resultados
           map(itens => this.obterDezPrimeirasPosicoes(itens)),
+
+          //switchMap pega todos os resultados (itens) e adiciona Estoque/Preço em cada um.
           switchMap(itens => this.adicionarEstoqueItens(itens)),
           switchMap(itens => this.adicionarPrecoItens(itens))
         )
+
         .subscribe(itens => {
           this.itens = itens
         }, () => this.itens = [])
@@ -45,31 +48,44 @@ export class BuscaItemComponent {
       this.itens = [];
     }
   }
+  
   //Filra somente os 10 primeiros resultados
   private obterDezPrimeirasPosicoes(itens: Item[]): Item[] {
     return itens.filter((item, index) => index < 10);
   }
 
   private adicionarPrecoItens(itens: Item[]): Observable<Item[]> {
+
+    //forkJoin aguarda a conclusão, combina e retorna os últimos valores que emitiram. 
     return forkJoin(
       //Indo no Service, enviando o Código e pegando o preço.
       itens.map(item => this.buscaService.procuraPrecoItem(item.codigoItem)
+
         .pipe(
+          //tap retorna o valor idêntico de sua origem.
           tap(itemPreco => this.adicionarPrecoItem(item, itemPreco)),
           map(() => item)
         )
+
       )
     );
   }
 
   private adicionarEstoqueItens(itens: Item[]): Observable<Item[]> {
+    
+    //forkJoin aguarda a conclusão, combina e retorna os últimos valores que emitiram. 
     return forkJoin(
+
       //Indo no Service, enviando o Código e pegando o estoque.
       itens.map(item => this.buscaService.procuraEstoqueItem(item.codigoItem)
+        
         .pipe(
+
+          //tap retorna o valor idêntico de sua origem.
           tap(estoqueItem => this.adicionarEstoqueItem(item, estoqueItem)),
-          map(() => item)
+          map(() => item)          
         )
+
       )
     );
   }

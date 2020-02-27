@@ -21,5 +21,4 @@ export class ResultadoBuscaComponent implements OnInit {
         data: item
       });
     }
-
 }

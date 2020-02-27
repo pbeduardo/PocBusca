@@ -1,4 +1,4 @@
-import { Preco } from './preco';
+import { Preco } from './preco.model';
 
 export class ItemPreco {
     public codigoItem: number;

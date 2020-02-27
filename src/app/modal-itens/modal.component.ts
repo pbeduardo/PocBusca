@@ -1,14 +1,12 @@
 import { BuscaService } from '../busca/busca.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DetalheItem } from '../busca/item/item-detalhes/integration/response/item-detalhe.response';
-
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html'
 })
-export class ModalComponent implements OnInit {  
+export class ModalComponent implements OnInit {
 
   //Fazer model para descrição
   public principioAtivo: string;
@@ -47,8 +45,8 @@ export class ModalComponent implements OnInit {
         this.categorias = res.itens[0].categorias;
         this.descricaoMarcaPai = res.itens[0].descricaoMarcaPai;
 
-        if (res && res.itens && res.itens[0].dadosImagens[0] && res.itens[0].dadosImagens[0].url){
-          
+        if (res && res.itens && res.itens[0].dadosImagens[0] && res.itens[0].dadosImagens[0].url) {
+
           this.img = res.itens[0].dadosImagens[0].url;
         }
       }
